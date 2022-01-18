@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Title of html document</title>
+</head>
+
+<body>
+    <p id=complex></p>
+
+
+
+    <script>
+        // var paragraph = document.getElementById('complex')
+        // paragraph.innerHTML = calculator(50, 50);
+        //javascript
+
+        // function calculator(tall1, tall2) {
+        //     var svar = tall1 + tall2;
+        //     return svar;
+        // }
+
+        show()
+        function show(){
+            html = `
+            ${showNavBar()}
+            <h1>Hjemmeside </h1>
+            `
+            document.getElementById('complex').innerHTML = html
+        }
+
+        function showNavBar(){
+            let html = `
+                <div> 
+                    <button>Hjem</button>
+                    <button>Info</button>
+                </div>`
+                return html;
+        }
+
+    </script>
+
+</body>
+
+</html>

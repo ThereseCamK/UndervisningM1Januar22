@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <script>
+        //model
+        var alt = '';
+        var result = '';
+
+
+        //view
+        show();
+        function show(){
+            document.getElementById('output').innerHTML = `
+            <h3>Hva heter jeg til mellomnavn?</h3>
+            <p onclick="alt = this.innerHTML">Åshild</p>
+            <p onclick="alt = this.innerHTML">Camilla</p>
+            <p onclick="alt = this.innerHTML">Kåre</p>
+            <button onclick="checkAnswer()">SjekkSvar </button>
+            <div>${result}</div>
+            `;
+        }
+
+        //controller
+        function checkAnswer(){
+          
+            if(alt == 'Camilla'){
+                result = `Du svarte ${alt} og det var Riktig`
+            }
+            else result = `Du svarte ${alt} og det var Feil`
+
+            show();
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Paramenter,
+        MVC,
+    -->
+
+
+    <h3>Hva heter jeg til mellomnavn?</h3>
+    <div onclick="answer(this, 'Feil', 'red')"> Åshild</div>
+    <div onclick="answer(this, 'Riktig', 'green')"> Camilla</div>
+    <div onclick="answer(this, 'Feil' , 'red')"> Kåre</div>
+    
+    <button onclick="showAnswer(2, 3, 2)">vis svar</button>
+
+    <div id="output"></div>
+
+    <script>
+
+        function answer(element, wrongOrCorrect, colorChoose){
+            document.getElementById('output').innerHTML = `
+            <p style="color: ${colorChoose};">Du svarte: 
+            ${element.innerHTML}  
+                 Det var : 
+                 ${wrongOrCorrect}
+                 </p>`;
+        }
+
+        function showAnswer(n1, n2, n3){
+            var svar = n1 + n2 + n3;
+            document.getElementById('output').innerHTML = svar;
+        
+
+        }
+
+
+    </script>
+
+</body>
+</html>
