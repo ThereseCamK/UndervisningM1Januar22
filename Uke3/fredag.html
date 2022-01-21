@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app"></div>
+    <script>
+
+
+//MODEL
+var poeng = 0;
+var dobbel = 2;
+var buttonState = 'disabled'
+
+//VIEW
+updateView();
+function updateView(){
+    let html = document.getElementById('app').innerHTML = `
+    <h1>Hei på deg</h1>
+
+    <button onclick="countNumber(+1)"> Legge til i butikken </button>
+    <button ${buttonState} onclick="countNumber(-1)">Fjerne fra butikken</button>
+    <button onclick="countNumber('gange')">Ganger</button>
+
+    <div>${poeng}</div>
+    `;
+}
+
+
+//CONTROLLER
+function countNumber(count){
+    // var input = character.replace('×', '*');
+    console.log(count, ' hva er heiheiehie')
+    // poeng += eval(input + count);
+   
+    // if(poeng == 0) poeng = 0;
+    if (count == 'gange'){
+
+        poeng *= 2;
+        }
+    else {
+
+        poeng += count;
+        buttonState = ' ';
+    }
+
+    if(poeng <= 0){
+        buttonState = 'disabled'; 
+    }
+   
+    
+    updateView();
+}
+
+
+
+    </script>
+
+</body>
+</html>
