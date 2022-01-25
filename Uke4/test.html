@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.17.2.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.17.2.js"></script>
+<script src="controller.js"></script>
+</body>
+
+<script>
+  
+ 
+    // QUnit.module('add', function() {
+    //   QUnit.test('add two numbers', function(assert) {
+
+        
+    //     var forventet = 10;
+    //     var faktisk = add(4, 6);
+    //     assert.equal(faktisk, forventet, ' tallet skal bli 10 ');
+
+    //   });
+
+    // });
+
+    QUnit.module('lengde', function() { //kjekt å ha en modul til hver funksjon
+    QUnit.test('om lenge dato er 10', function(assert) {
+
+        
+            var forventet = true;
+            var faktisk = isDateValid('25.01.2022');
+            assert.equal(faktisk, forventet, 'lengde på dato');
+
+        });
+
+        QUnit.test('om lenge dato  ikke er 10', function(assert) {
+        var forventet = false;
+        var faktisk = isDateValid('25.01.22');
+        assert.equal(faktisk, forventet, 'lengde på ikke er dato');
+
+        });
+    });
+
+    QUnit.module('dotter', function(){
+        QUnit.test('dott riktig plasser', function(assert){
+
+           var faktisk = isDateValid('25.01.2022');
+           var forventet = true;
+           assert.equal(faktisk, forventet)
+           //deepEqual
+        });
+
+        QUnit.test('1 dott feil plasser', function(assert){
+
+        var faktisk = isDateValid('2.501.2022');
+        var forventet = false;
+        assert.equal(faktisk, forventet)
+        });
+
+        QUnit.test('2 dott feil plasser', function(assert){
+
+        var faktisk = isDateValid('25.012.022');
+        var forventet = false;
+        assert.equal(faktisk, forventet)
+        //assert == sjekke feil er feil, rett er rett
+        });
+
+    });
+    QUnit.module('year', function(){
+
+        QUnit.test('riktig lengde på året', function(assert){ 
+
+        assert.equal(isDateValid('25.01.2022'), true)
+    });
+
+    QUnit.test('feil lengde på året', function(assert){   
+           assert.equal(isDateValid('25.01.22'), false)
+       });
+
+});
+
+
+        QUnit.module('month', function(){
+
+            QUnit.test('riktig lengde på måned', function(assert){ 
+
+                assert.equal(isDateValid('25.01.2022'), true)
+            });
+
+            QUnit.test('feil lengde på måned', function(assert){   
+                assert.equal(isDateValid('25.1.22'), false)
+            });
+
+            QUnit.test('større tall enn 12', function(assert){ 
+
+                assert.equal(isDateValid('25.13.2022'), false)
+            });
+            QUnit.test('mindre tall enn 01', function(assert){ 
+
+                assert.equal(isDateValid('25.00.2022'), false)
+            });
+
+        });
+
+        QUnit.module('dato', function(){
+            QUnit.test('riktig dag', function(assert){
+                assert.equal(isDateValid('25.01.2022'), true)
+            });
+            QUnit.test('ikke riktig dag', function(assert){
+                assert.equal(isDateValid('00.01.2022'), false)
+            });
+            QUnit.test('riktig dag i skuddår', function(assert){
+                assert.equal(isDateValid('29.02.2024'), true)
+            });
+            QUnit.test('feil dag i skuddår', function(assert){
+                assert.equal(isDateValid('29.02.2022'), false)
+            });
+            QUnit.test('for høy dato', function(assert){
+                assert.equal(isDateValid('32.01.2022'), false)
+            });
+            QUnit.test('for høy dato på feil mnd', function(assert){
+                assert.equal(isDateValid('31.04.2022'), false)
+            });
+            QUnit.test('31 dager på riktig mnd', function(assert){
+                assert.equal(isDateValid('31.05.2022'), true)
+            });
+            QUnit.test('feil år ', function(assert){
+                assert.equal(isDateValid('31.05.22222'), false)
+            });
+        })
+    
+
+
+
+
+
+  </script>
