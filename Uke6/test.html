@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.17.2.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.17.2.js"></script>
+</body>
+<script src="controller.js"></script>
+<script>
+      let numbers = [7, 3, 1, 5, 8];
+        let chosenBar = 'Ingen'; 
+        let inputValue; 
+        //selectBar(barNo)
+        //removeChosenBar()
+        //changeChosenBar()
+        //addNewBar()
+    function show(){}
+  
+  
+      QUnit.test('Velg Stolpe', function(assert) {
+
+        selectBar(1);
+        selectBar(2)
+
+        assert.equal(chosenBar, 2);
+      });
+      QUnit.test('Velg Stolpe, 2 ganger', function(assert) {
+
+        selectBar(3);
+        selectBar(3)
+
+        assert.equal(chosenBar, 'Ingen');
+    });
+
+
+  QUnit.test('Slette Stolpe', function(assert) {
+        numbers =[1, 2, 3];
+        chosenBar = 1;
+        removeChosenBar();
+        assert.deepEqual(numbers, [2, 3]);
+        assert.equal(numbers.length, 2);
+    });
+    QUnit.test('Endre Stolpe', function(assert) {
+        numbers =[1, 2, 3];
+        chosenBar = 2;
+        inputValue = 7;
+        changeChosenBar();
+        assert.deepEqual(numbers, [1, 7, 3]);
+        
+    });
+    QUnit.test('Legg til Stolpe', function(assert) {
+        numbers =[1, 2, 3];
+        inputValue = 11;
+        addNewBar();
+        assert.deepEqual(numbers, [1, 2, 3, 7]);
+        
+    });
+
+
+  </script>
