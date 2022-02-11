@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic 8 Ball</title>
+    <style>
+        .ball{
+            background-color: black;
+            color: white;
+            border-radius: 50%;
+            box-shadow: 5px 10px 10px  gray;
+            width: 200px;
+            height: 200px;
+           
+            
+        }
+        .txt{
+           text-shadow: 2px 2px 2px rgb(117, 178, 248);
+            padding: 35%;
+        }
+    </style>
+    
+    
+</head>
+
+<body>
+<div id="app"></div>
+<script>
+
+    //Test også for-løkke og if setning lag en unitTest for å sjekke mot index i array
+    //Bonus om de kan forklare hvordan fjerne og legge til i array 
+
+
+// model
+var txtOutput = 'Ask A BIG question';
+var arrayOfOutputs = ['Go for it!', "No! don't do it!", "YES!", "NO!", "Follow you'r inner voice", "are you stupid?"]
+
+
+// view
+show();
+function show() {
+
+document.getElementById('app').innerHTML = /*HTML*/`
+        <div class="ball" onclick="giveAnswer()">
+            <div class="txt">${txtOutput} </div>
+        </div>
+        `
+}
+// controler
+function giveAnswer(){
+    let randomIndex = Math.floor(Math.random() * arrayOfOutputs.length);
+
+    txtOutput = arrayOfOutputs[randomIndex];
+    show();
+
+}
+
+</script>
+
+
+
+
+
+</body>
+</html>

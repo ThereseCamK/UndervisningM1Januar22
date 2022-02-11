@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>migic 8 Ball</title>
+    <style>
+        .container{
+            background-color: black;
+            border-radius: 50%;
+            width: 400px;
+            height: 400px;
+            margin-top: 10px;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: hotpink;
+            text-shadow: #f108ac 5px 5px 5px;
+            overflow: auto;
+            padding: 20px;
+            box-shadow: 20px 10px 50px inset grey;
+
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script>
+        //Model
+        let answers = ['JA!', 'NEEEEI!!', 'Det kan du drite i!', 'Prøv igjen senere', 'Vennligst kontakt kundeservice', "That's what she said", 'Desverre, men visste du at Norges høyeste fjell er 2469 meter høyt',
+        'JØSS, du greide det faktisk!', 'Selvfølgelig min <br> vakre prins' ];
+        let number = '';
+        let answer = '';
+        let output = '';
+        //View
+        show();
+        function show(){
+            let html = `Magisk 8 ball <br>
+            <div class="container">
+            <input type="text" onchange="output+=this.value">
+            <button onclick="checkAnswer()"> sjekk svar </button>
+                <br>
+            <p> ${output} </p>
+            </div>
+         
+            `;
+
+
+            document.getElementById('app').innerHTML = html;
+        }
+
+
+        //Controller
+        function checkAnswer(){
+            let random = randomNumber();
+            answer = answers[random];
+            output += '<br>' + answer + '<br>'; 
+            show();
+        }
+
+        function randomNumber(){
+           return number = Math.floor(Math.random() * answers.length);
+
+        }
+
+
+
+
+    </script>
+
+
+    
+</body>
+</html>
