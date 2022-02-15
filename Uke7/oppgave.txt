@@ -1,0 +1,8 @@
+Frivillig Oppgave til Fredag.
+
+Lag en hangman, ha med liste med ord, hent ut ett random,
+og ha med input felt hvor man sjekker om ordet er riktig, nivå 2 er å sjekke bokstav i ordet. 
+
+Dette blir CodeAlongen på fredag hvor dere kommer med deres innspill til løsningen. 
+Prøv å gjør det så enkelt som mulig
+
