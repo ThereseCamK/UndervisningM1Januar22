@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        //Model 
+        let word = ['kjole', 'bluse', 'edderkopp', 'blåmeis',  'orkide'];
+        let guessLetter = '';
+        let wrongGuess = 0;
+    
+        let random = Math.floor(Math.random()* word.length);
+        let charLength =  word[random].length;
+        let char = ' _ ';
+        let wordArray = [];
+        let emtyArray = [];
+        let wrongGuessLetter = [];
+
+        let topBar = '';
+        let stolpe = '';
+        let head = '';
+        let la = '';
+        let ra = '';
+        let ll = ' ';
+        let rl = '';
+        let space = ' ';
+        let bottomBar = '';
+        let body= '';
+
+
+        //--------
+        // |    O
+        // |   /|\
+        // |   / \
+        //---
+
+
+        //View
+        randomWordArray();
+        view();
+        function view(){
+           
+            let html = `<div>${wrongGuess} </div>
+
+            <div> ${topBar} <br>
+                ${stolpe}   ${head}<br>
+                ${stolpe} ${la}${body}${ra}<br>
+                ${stolpe} ${ll}${space}${rl}<br>
+                ${bottomBar}
+                   </div>
+            
+            <div>${emtyArray.join('')}<br>
+            Dine gjettinger: ${wrongGuessLetter.join('')}</div>`;
+
+            html += `<br><br>
+            <input type="text" oninput="guessLetter = this.value"> 
+            <button onclick="checkLetter()">Sjekk </button>`
+            document.getElementById('app').innerHTML = html;
+        }
+
+        //Controller
+        
+        function randomWordArray(){
+       
+            for(let i = 0; i < word[random].length; i++){
+                    wordArray.push(word[random][i]);
+                    emtyArray.push(char);
+                }
+            
+        }
+        function checkLetter(){
+            let singeChar = guessLetter.toLowerCase();
+            if(singeChar.length > 1)alert('venligst skriv EN bokstav')
+            if(word[random].includes(singeChar)){
+                for(let i = 0; i < wordArray.length; i++){
+                   if(wordArray[i] == singeChar){
+                       emtyArray[i] = ' '+ singeChar + ' '; 
+                       charLength --;
+                       if(charLength == 0){
+                        alert('Du klarte det, det riktig ordet var: '+ wordArray.join(''))
+                        }
+                     } 
+                     
+                }
+            }
+           
+            else{
+                wrongGuess++;
+                wrongGuessLetter.push(guessLetter +' ');
+                if(wrongGuess == 1){
+                    bottomBar = '---';
+                }
+                if(wrongGuess == 2){
+                    stolpe = '|';  
+                }
+                if(wrongGuess == 3){
+                    topBar = '------'; 
+                }
+                if(wrongGuess == 4){
+                    head = '  .O';  
+                }
+                if(wrongGuess == 5){
+                    body= '|';
+                }
+                if(wrongGuess == 6){
+                    la = ' ./'; 
+                }
+                if(wrongGuess == 7){
+                    ra = '\\';
+                }
+                if(wrongGuess == 8){
+                    ll = ' ./'; 
+                }
+                if(wrongGuess == 9){
+                    rl = '\\';
+                    alert('Du tapte', window.location.reload())
+                }
+
+               
+                
+            }
+         
+            view();
+        }
+
+    </script>
+</body>
+</html>

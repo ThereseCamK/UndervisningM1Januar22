@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+
+        let words = ['pasta', 'mountain', 'yellow', 'zebra'];
+        let random = Math.floor(Math.random() * words.length);
+        let activeWord = words[random];
+        let wrongWordCount = 0;
+
+        //hjelpevariabler
+        let html = ``;
+        const appDiv = document.getElementById('app');
+
+        show();
+        function show(){
+            appDiv.innerHTML = `
+            <div>Antall feil gjettninger: ${wrongWordCount}</div>
+            
+            <input type="text" onchange="check(this.value)">`
+        }
+
+        function check(guessedWord){
+            if(guessedWord == activeWord){
+                alert('YouWon');
+            }
+            else{
+                wrongWordCount ++;
+                alert('Feil ord');
+            }
+            show();
+
+        }
+
+
+    </script>
+</body>
+</html>

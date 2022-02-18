@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        //hjelpevariabler
+       
+        const appDiv = document.getElementById('app');
+
+        let words = ['pasta', 'mountain', 'yellow', 'zebra'];
+        const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+            't', 'u', 'v', 'w', 'x', 'y', 'z'
+            ];
+
+            const understreker = ['_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ',
+             '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', 
+            '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', 
+        ];
+        const understrekerTilOrd = ['_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ',
+             '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', 
+            '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', 
+        ];
+
+        let random = Math.floor(Math.random() * words.length);
+        let activeWord = words[random];
+        let wrongGuesses = [];
+        var underScore = '';
+        
+
+        show();
+        function show(){
+            underScore = '';
+            let html = `feile bokstaver: ${wrongGuesses.join(' ')}<hr>`;
+            for(let i = 0; i < alphabet.length; i++){
+                html += `<button onclick="checkChar(this.innerHTML)">${alphabet[i]}</button>`
+            }
+            html+= `<hr>`
+            for(let i = 0; i < activeWord.length; i++){
+                underScore += `${understreker[i]}`;
+            }
+            html += `${underScore}`
+            appDiv.innerHTML = html
+        }
+
+        function checkChar(guessedLetter){
+            // console.log(guessedLetter, 'hva er guessedLetter')
+            if(activeWord.includes(guessedLetter)){
+                for(let i = 0;i < activeWord.length; i++){
+                    if(guessedLetter == activeWord[i]){
+                        understreker[i] = guessedLetter;
+                        if (activeWord === underScore) {
+                        alert("You win");
+                        }
+                    }
+                }
+            }
+            else {
+               wrongGuesses.push(guessedLetter)
+            }
+            show();
+        }
+
+        
+    </script>
+</body>
+</html>

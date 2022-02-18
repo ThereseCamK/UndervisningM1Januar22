@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        let word = ['kjole', 'bluse', 'edderkopp', 'blåmeis', 'rumpesprekk', 'orkide', ];
+        let guessedChar = '';
+        let random = Math.floor(Math.random() * word.length);
+        let randomWord = word[random];
+        let wordArray = [];
+        let wrongGuess = 0;
+
+         show();
+         showChar()
+         checkChar();
+       
+         function show(){
+      
+            let html = `<h1> HANGMAN </h1> <br>
+            feil Gjettning: ${wrongGuess}<br>
+            ${wordArray.join('')}<hr>
+            <div>
+                <input type="text" oninput="guessedChar = this.value"> 
+                <button onclick="checkChar()">Sjekk bokstav</button>
+            </div>`;
+
+        document.getElementById('app').innerHTML = html;
+         }
+
+         function showChar(){
+            for(let i = 0; i< randomWord.length; i++){
+                    wordArray.push(' _ ');
+            }
+         }
+
+         function checkChar(){
+             
+            if(randomWord.includes(guessedChar)){
+                for(let i = 0; i< randomWord.length; i++){
+                        if(randomWord[i] == guessedChar){
+                        wordArray[i] = ' '+ guessedChar+ ' ';
+                    }
+                }
+             }
+             else {
+                 wrongGuess ++
+             }
+          show();
+         }
+
+
+
+    </script>
+</body>
+</html>
