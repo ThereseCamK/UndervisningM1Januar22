@@ -19,22 +19,17 @@
             't', 'u', 'v', 'w', 'x', 'y', 'z'
             ];
 
-            const understreker = ['_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ',
-             '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', 
-            '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', 
-        ];
-        const understrekerTilOrd = ['_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ',
-             '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', 
-            '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', '_ ', 
-        ];
+            const understreker = [];
+       
 
         let random = Math.floor(Math.random() * words.length);
         let activeWord = words[random];
         let wrongGuesses = [];
         var underScore = '';
         
-
+        underscorePush();
         show();
+        
         function show(){
             underScore = '';
             let html = `feile bokstaver: ${wrongGuesses.join(' ')}<hr>`;
@@ -49,23 +44,35 @@
             appDiv.innerHTML = html
         }
 
+        function underscorePush(){
+            for(let i = 0; i < activeWord.length; i++){
+                understreker.push(' _ ')
+            }
+        }
         function checkChar(guessedLetter){
+            
+
             // console.log(guessedLetter, 'hva er guessedLetter')
             if(activeWord.includes(guessedLetter)){
+                
                 for(let i = 0;i < activeWord.length; i++){
+                    
                     if(guessedLetter == activeWord[i]){
-                        understreker[i] = guessedLetter;
-                        if (activeWord === underScore) {
-                        alert("You win");
+                        understreker[i] = guessedLetter;  
+                        if(activeWord == understreker.join('')){
+                            alert('You Win')
                         }
                     }
+                  
                 }
             }
             else {
                wrongGuesses.push(guessedLetter)
             }
+           
             show();
         }
+        
 
         
     </script>
