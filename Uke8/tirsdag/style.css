@@ -1,0 +1,8 @@
+.albumPic{
+    height: 100px;
+    width: 100px;
+}
+body{
+    background-image: url("https://image.tmdb.org/t/p/w780/j31IcvZpmKko4jC6kWJHqK9WNii.jpg");
+    color: wheat;
+}
