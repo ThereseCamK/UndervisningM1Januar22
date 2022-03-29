@@ -1,0 +1,8 @@
+.cell{
+float: left;
+margin: 10px;
+border: 2px solid blue;
+}
+.first{
+clear: left;
+}
